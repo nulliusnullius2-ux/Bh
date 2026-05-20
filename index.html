@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funny Elephant Animation</title>
+
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:black;
+    font-family:monospace;
+}
+
+/* TERMINAL */
+
+#terminal{
+    position:absolute;
+    left:0;
+    top:0;
+
+    width:35%;
+    height:100%;
+
+    overflow:hidden;
+
+    color:#00ff66;
+
+    padding:20px;
+
+    font-size:13px;
+    line-height:17px;
+
+    white-space:pre-line;
+
+    text-shadow:
+    0 0 5px #00ff66,
+    0 0 15px #00ff66;
+}
+
+/* MATRIX */
+
+#matrix{
+    position:absolute;
+
+    left:35%;
+    top:0;
+
+    width:15%;
+    height:100%;
+
+    overflow:hidden;
+
+    color:#00ff66;
+
+    font-size:10px;
+    line-height:11px;
+
+    padding-top:10px;
+
+    white-space:pre-line;
+
+    opacity:0.8;
+
+    text-shadow:
+    0 0 5px #00ff66;
+}
+
+/* SŁOŃ */
+
+#elephant{
+    position:absolute;
+
+    right:5%;
+    bottom:5%;
+
+    width:420px;
+    height:420px;
+
+    animation:
+    float 2s ease-in-out infinite;
+}
+
+.part{
+    position:absolute;
+    transition:0.15s linear;
+}
+
+/* USZY */
+
+.ear{
+    width:160px;
+    height:170px;
+
+    background:#7a7a7a;
+
+    border-radius:50%;
+
+    box-shadow:
+    inset -10px -10px 20px rgba(0,0,0,0.3),
+    0 0 20px #00ff66;
+}
+
+.left-ear{
+    left:0;
+    top:80px;
+
+    animation:
+    earLeft 0.7s infinite alternate;
+}
+
+.right-ear{
+    right:0;
+    top:80px;
+
+    animation:
+    earRight 0.7s infinite alternate;
+}
+
+/* GŁOWA */
+
+.head{
+    width:220px;
+    height:220px;
+
+    background:#8c8c8c;
+
+    border-radius:50%;
+
+    left:100px;
+    top:60px;
+
+    box-shadow:
+    inset -10px -10px 20px rgba(0,0,0,0.3),
+    0 0 20px #00ff66;
+}
+
+/* OCZY */
+
+.eye{
+    width:22px;
+    height:22px;
+
+    background:black;
+
+    border-radius:50%;
+
+    top:90px;
+}
+
+.left-eye{
+    left:60px;
+}
+
+.right-eye{
+    right:60px;
+}
+
+/* TRĄBA */
+
+.trunk{
+    width:70px;
+    height:190px;
+
+    background:#808080;
+
+    border-radius:40px;
+
+    left:75px;
+    top:110px;
+
+    transform-origin:top center;
+
+    box-shadow:
+    inset -8px -8px 15px rgba(0,0,0,0.3),
+    0 0 15px #00ff66;
+
+    animation:
+    trunkMove 0.4s infinite alternate;
+}
+
+/* KŁY */
+
+.tusk{
+    width:30px;
+    height:90px;
+
+    background:#f5f5f5;
+
+    border-radius:40px;
+
+    top:150px;
+}
+
+.left-tusk{
+    left:35px;
+
+    transform:rotate(20deg);
+}
+
+.right-tusk{
+    right:35px;
+
+    transform:rotate(-20deg);
+}
+
+/* NAPIS */
+
+.warning{
+    position:absolute;
+
+    top:20px;
+    right:30px;
+
+    color:red;
+
+    font-size:42px;
+    font-weight:bold;
+
+    text-shadow:
+    0 0 10px red,
+    0 0 25px red,
+    0 0 60px red;
+
+    animation:
+    blink 1s infinite;
+}
+
+@keyframes blink{
+
+    0%{opacity:1;}
+    50%{opacity:0.4;}
+    100%{opacity:1;}
+}
+
+/* ANIMACJE */
+
+@keyframes trunkMove{
+
+    0%{
+        transform:
+        rotate(-10deg);
+    }
+
+    100%{
+        transform:
+        rotate(10deg);
+    }
+}
+
+@keyframes earLeft{
+
+    0%{
+        transform:
+        rotate(-8deg);
+    }
+
+    100%{
+        transform:
+        rotate(8deg);
+    }
+}
+
+@keyframes earRight{
+
+    0%{
+        transform:
+        rotate(8deg);
+    }
+
+    100%{
+        transform:
+        rotate(-8deg);
+    }
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* SHAKE */
+
+body{
+    animation:shake 0.09s infinite;
+}
+
+@keyframes shake{
+
+    0%{transform:translate(0px);}
+    25%{transform:translate(1px,-1px);}
+    50%{transform:translate(-1px,1px);}
+    75%{transform:translate(1px,1px);}
+    100%{transform:translate(0px);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="warning">
+ELEPHANT.exe
+</div>
+
+<div id="terminal"></div>
+
+<div id="matrix"></div>
+
+<div id="elephant">
+
+    <div class="part ear left-ear"></div>
+    <div class="part ear right-ear"></div>
+
+    <div class="part head">
+
+        <div class="part eye left-eye"></div>
+        <div class="part eye right-eye"></div>
+
+        <div class="part tusk left-tusk"></div>
+        <div class="part tusk right-tusk"></div>
+
+        <div class="part trunk"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* TERMINAL */
+
+const terminal =
+document.getElementById("terminal");
+
+const logs = [
+
+"ACCESSING DATABASE...",
+"VERIFYING SESSION...",
+"READING MEMORY...",
+"CONNECTING SERVER...",
+"OPENING STORAGE...",
+"SCANNING FILES...",
+"EXPORTING TOKENS...",
+"DOWNLOADING DATA..."
+];
+
+function addLine(){
+
+const text =
+`[${Math.floor(Math.random()*999999999)}]
+${logs[Math.floor(Math.random()*logs.length)]}
+
+`;
+
+terminal.innerHTML += text;
+
+if(terminal.innerHTML.length > 60000){
+
+terminal.innerHTML = "";
+}
+
+terminal.scrollTop =
+terminal.scrollHeight;
+}
+
+setInterval(addLine,45);
+
+/* MATRIX */
+
+const matrix =
+document.getElementById("matrix");
+
+const matrixCode = [
+
+"010101010101",
+"cache.open",
+"packet.send",
+"kernel.load",
+"decrypting...",
+"device.sync",
+"root=true",
+"memory.read",
+"token.export",
+"remote.access"
+];
+
+function addCode(){
+
+matrix.innerHTML +=
+matrixCode[
+Math.floor(Math.random()*matrixCode.length)
+] + "\n";
+
+if(matrix.innerHTML.length > 20000){
+
+matrix.innerHTML = "";
+}
+
+matrix.scrollTop =
+matrix.scrollHeight;
+}
+
+setInterval(addCode,20);
+
+</script>
+
+</body>
+</html>
